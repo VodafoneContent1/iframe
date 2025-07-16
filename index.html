@@ -2,40 +2,101 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>iFrame Behind PNG</title>
+  <title>Iframe with Overlay and Text</title>
   <style>
-    .container {
+    body {
+      margin: 0;
+      font-family: Vodafone, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    .left-container {
       position: relative;
-      width: 800px;
-      height: 600px;
-      margin: auto;
+      width: 50%;
+      background-color: #f5f5f5;
     }
 
-    iframe {
-      position: absolute;
-      width: 100%;
-      height: 100%;
+.frame-wrapper {
+  position: absolute;
+  top: 10px;      /* same as image top */
+  left: 70px;      /* same as image left */
+  width: 70%;
+  aspect-ratio: 9 / 16; /* adjust based on your image */
+}
+
+.frame-wrapper iframe,
+.frame-wrapper .overlay-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.frame-wrapper iframe {
+  position: absolute;
+  top: 2%;         /* Push it down slightly */
+  left: 10px;
+  width: 95%;
+  height: 90%;     /* Make it slightly shorter */
+  z-index: 1;
+  border: none;
+}
+
+.frame-wrapper .overlay-image {
+  z-index: 2;
+  opacity: 0.9;
+  pointer-events: none; /* allows clicks to pass through to iframe if needed */
+}
+
+    .right-container {
+  width: 50%;
+  background-color: #f5f5f5;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical centering */
+  align-items: flex-start; /* or center if you want it horizontally centered */
+  padding: 40px;
+}
+.content-box {
+  max-width: 500px;
+  width: 100%;
+}
+      button {
+      padding: 10px 20px;
+      font-size: 16px;
+      font-family: Vodafone, sans-serif;
+      cursor: pointer;
+      background-color: #e60000;
+      color: white;
       border: none;
-      z-index: 1;
+      border-radius: 5px;
     }
 
-    .overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: url('https://n.vodafone.ie/content/dam//clear/images/clearmobile-test.png') no-repeat center center;
-      background-size: cover;
-      z-index: 2;
-      pointer-events: none; /* Allows clicks to pass through the image to the iframe */
+    button:hover {
+      background-color: #9f0101;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+<div class="left-container">
+  <div class="frame-wrapper">
     <iframe src="https://fast.com/"></iframe>
-    <div class="overlay"></div>
+    <img src="https://images.vodafone.co.uk/tizrehont83j/2jV6CzGHPJKzghPMAbunQd/3b1539f5255e11419697580ee09d6446/iframe-overlay2.0.png" alt="Overlay Image" class="overlay-image">
   </div>
+</div>
 
+  <div class="right-container">
+      <div class="content-box">
+    <h2>Check Your Internet Speed</h2>
+    <p>Check your broadband or WiFi speed in seconds. See if your connection is fast enough for streaming, gaming, or remote work.</p>
+    <p><b>Choose Vodafone for Fast, Reliable Broadband</b><br><br>Get reliable fibre broadband up to 2 Gbps ideal for busy homes and smart devices. Enjoy great value, fast speeds, and trusted service.</p>
+    <button onclick="activateIframe()">Check availability</button>
+  </div>
+</div>
 </body>
 </html>
