@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iframe with Overlay and Text</title>
   <style>
     body {
@@ -19,9 +20,9 @@
 
 .frame-wrapper {
   position: absolute;
-  top: 10px;      /* same as image top */
-  left: 70px;      /* same as image left */
-  width: 70%;
+  top: 50px;      /* same as image top */
+  left: 140px;      /* same as image left */
+  width: 60%;
   aspect-ratio: 9 / 16; /* adjust based on your image */
 }
 
@@ -39,7 +40,7 @@
   top: 2%;         /* Push it down slightly */
   left: 10px;
   width: 95%;
-  height: 90%;     /* Make it slightly shorter */
+  height: 92%;     /* Make it slightly shorter */
   z-index: 1;
   border: none;
 }
@@ -59,7 +60,18 @@
   flex-direction: column;
   justify-content: center; /* vertical centering */
   align-items: flex-start; /* or center if you want it horizontally centered */
-  padding: 40px;
+  padding: 25px;
+}
+.right-container h2 {
+  font-size: 32px;
+}
+
+.right-container p {
+  font-size: 20px;
+}
+
+.right-container button {
+  font-size: 18px;
 }
 .content-box {
   max-width: 500px;
@@ -79,6 +91,47 @@
     button:hover {
       background-color: #9f0101;
     }
+    @media (max-width: 1000px) {
+  body {
+    flex-direction: column;
+.left-container,
+  .right-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .frame-wrapper {
+    position: relative;
+    width: 80%;
+    left: 10%;
+    top: 20px;
+  }
+
+  .right-container {
+    padding: 40px 30px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .content-box {
+    max-width: 100%;
+    font-size: 1.1rem; /* Increase base font size */
+  }
+
+  .right-container h2 {
+    font-size: 28px;
+  }
+
+  .right-container p {
+    font-size: 18px;
+  }
+
+  .right-container button {
+    font-size: 18px;
+    padding: 14px 28px;
+  }
+}
+}
   </style>
 </head>
 <body>
@@ -93,8 +146,8 @@
   <div class="right-container">
       <div class="content-box">
     <h2>Check Your Internet Speed</h2>
-    <p>Check your broadband or WiFi speed in seconds. See if your connection is fast enough for streaming, gaming, or remote work.</p>
-    <p><b>Choose Vodafone for Fast, Reliable Broadband</b><br><br>Get reliable fibre broadband up to 2 Gbps ideal for busy homes and smart devices. Enjoy great value, fast speeds, and trusted service.</p>
+    <p>Check your broadband or WiFi speed in seconds. See if your connection is fast enough for streaming,<br> gaming, or remote work.</p>
+    <p><b>Choose Vodafone for Fast, Reliable Broadband</b><br><br>Get reliable fibre broadband up to 2 Gbps ideal for busy homes and smart devices. Enjoy great value, fast speeds,<br> and trusted service.</p>
     <button onclick="activateIframe()">Check availability</button>
   </div>
 </div>
